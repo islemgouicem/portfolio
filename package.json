@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/islemgouicem/portfolio",
+  "homepage": "https://islemgouicem.github.io/portfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -33,6 +33,6 @@
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",
     "tailwindcss-animate": "^1.0.7",
-    "vite": "^5.0.0"
+    "vite": "^6.3.5"
   }
 }
