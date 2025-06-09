@@ -26,7 +26,7 @@ function App() {
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/contact" element={<Contact />} />
 
-          {/* Redirect any unknown paths to home */}
+          {/* Catch all route - redirect to home */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>
