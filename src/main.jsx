@@ -5,7 +5,7 @@ import App from "./App.jsx"
 import "./styles/index.css"
 
 // Get the base URL for GitHub Pages
-const basename = import.meta.env.DEV ? "/" : "/ai-designer-portfolio"
+const basename = import.meta.env.DEV ? "/" : "/portfolio"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
