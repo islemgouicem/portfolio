@@ -9,7 +9,7 @@ const AnimatedBackground = () => {
       {[...Array(8)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute rounded-full bg-gradient-to-r from-neural-400/10 via-cyber-400/10 to-quantum-400/10 blur-xl"
+          className="absolute rounded-full bg-gradient-to-r from-gold-400/10 via-silver-400/10 to-platinum-400/10 blur-xl"
           style={{
             width: Math.random() * 400 + 200,
             height: Math.random() * 400 + 200,
@@ -51,7 +51,7 @@ const AnimatedBackground = () => {
           }}
         >
           <div
-            className={`w-4 h-4 bg-gradient-to-r from-neural-500/20 to-cyber-500/20 ${
+            className={`w-4 h-4 bg-gradient-to-r from-gold-500/20 to-silver-500/20 ${
               i % 3 === 0 ? "rounded-full" : i % 3 === 1 ? "rounded-lg" : "rotate-45"
             }`}
           />

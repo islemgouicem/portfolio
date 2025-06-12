@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
   }, [location.pathname])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-neural-50/30 to-cyber-50/30 dark:from-slate-900 dark:via-neural-950/50 dark:to-cyber-950/50 transition-colors duration-500">
+    <div className="min-h-screen bg-gradient-to-br from-platinum-50 via-silver-50/30 to-gold-50/20 dark:from-obsidian-950 dark:via-obsidian-900/50 dark:to-obsidian-800/30 transition-colors duration-500">
       <Navbar />
       <AnimatePresence mode="wait">
         <motion.main

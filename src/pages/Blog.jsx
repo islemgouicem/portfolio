@@ -103,7 +103,7 @@ const Blog = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gold-600 via-silver-600 to-platinum-600 bg-clip-text text-transparent">
             Blog
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
@@ -140,8 +140,8 @@ const Blog = () => {
                 onClick={() => setSelectedTag(tag)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   selectedTag === tag
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white"
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+                    ? "bg-gradient-to-r from-gold-500 via-gold-600 to-gold-700 text-white"
+                    : "bg-platinum-100 dark:bg-obsidian-800 text-zinc-700 dark:text-zinc-300 hover:bg-platinum-200 dark:hover:bg-obsidian-700"
                 }`}
               >
                 <Tag className="h-4 w-4 inline mr-1" />
@@ -167,7 +167,7 @@ const Blog = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
+                  className="bg-white dark:bg-obsidian-800 rounded-xl shadow-luxury overflow-hidden hover:shadow-luxury-lg transition-shadow duration-300 group"
                 >
                   <div className="aspect-video overflow-hidden">
                     <img
@@ -196,7 +196,7 @@ const Blog = () => {
                         {post.tags.slice(0, 2).map((tag) => (
                           <span
                             key={tag}
-                            className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs rounded-full"
+                            className="px-3 py-1 bg-gold-100 dark:bg-gold-900/30 text-gold-600 dark:text-gold-400 text-xs rounded-full"
                           >
                             {tag}
                           </span>
@@ -238,7 +238,7 @@ const Blog = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
+                  className="bg-white dark:bg-obsidian-800 rounded-xl shadow-luxury overflow-hidden hover:shadow-luxury-lg transition-shadow duration-300 group"
                 >
                   <div className="aspect-video overflow-hidden">
                     <img
@@ -267,7 +267,7 @@ const Blog = () => {
                         {post.tags.slice(0, 2).map((tag) => (
                           <span
                             key={tag}
-                            className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs rounded-full"
+                            className="px-3 py-1 bg-gold-100 dark:bg-gold-900/30 text-gold-600 dark:text-gold-400 text-xs rounded-full"
                           >
                             {tag}
                           </span>

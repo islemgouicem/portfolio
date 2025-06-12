@@ -1,62 +1,98 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Brain, Palette, Code, Database, Zap, Globe } from "lucide-react"
 import SkillCard from "../components/ui/SkillCard"
-
+import { Brain, Palette, Code, Database, Zap, Globe } from "lucide-react";
 const Skills = () => {
   const skillCategories = [
     {
       icon: Brain,
       title: "Artificial Intelligence",
-      color: "from-blue-500 to-cyan-500",
+      color: "from-gold-500 to-gold-700",
       skills: [
-        { name: "Machine Learning", level: 85 },
-        { name: "Deep Learning", level: 80 },
-        { name: "Natural Language Processing", level: 75 },
-        { name: "Computer Vision", level: 70 },
-        { name: "TensorFlow/PyTorch", level: 85 },
-        { name: "Python", level: 90 },
+        { name: "Python", level: 85 },
+        { name: "Data Science", level: 60 },
+        { name: "TensorFlow/PyTorch", level: 40 },
+        { name: "Machine Learning", level: 10 },
+        { name: "Deep Learning", level: 10 },
+        { name: "Natural Language Processing", level: 10 },
+        { name: "Computer Vision", level: 10 },
       ],
     },
     {
       icon: Palette,
       title: "Design",
-      color: "from-purple-500 to-pink-500",
+      color: "from-silver-500 to-silver-700",
       skills: [
-        { name: "UI/UX Design", level: 90 },
-        { name: "Figma", level: 95 },
-        { name: "Adobe Creative Suite", level: 85 },
-        { name: "Prototyping", level: 88 },
-        { name: "Design Systems", level: 82 },
-        { name: "User Research", level: 75 },
+        { name: "Adobe Illustrator", level: 70 },
+        { name: "Adobe Photoshop", level: 50 },
+        { name: "Figma", level: 50 },
+        { name: "UI/UX", level: 50 },
+        { name: "Web Design", level: 60 },
+        { name: "Design Systems", level: 50 },
+        { name: "User Research", level: 50 },
       ],
     },
     {
       icon: Code,
-      title: "Development",
-      color: "from-green-500 to-teal-500",
+      title: "Tech Architecture",
+      color: "from-platinum-500 to-platinum-700",
       skills: [
-        { name: "React/Next.js", level: 88 },
-        { name: "JavaScript/TypeScript", level: 85 },
-        { name: "Node.js", level: 80 },
-        { name: "HTML/CSS", level: 95 },
-        { name: "Git/GitHub", level: 90 },
-        { name: "API Development", level: 75 },
+        { name: "HTML+CSS", level: 90 },
+        { name: "Flask+PHP", level: 80 },
+        { name: "React", level: 60 },
+        { name: "Node.js/Next.js", level: 20 },
+        { name: "JavaScript/TypeScript", level: 60 },
+        { name: "SQL", level: 80 },
+        { name: "Linux", level: 80 },
       ],
     },
   ]
 
+
   const tools = [
-    { name: "Figma", category: "Design", icon: "🎨" },
-    { name: "VS Code", category: "Development", icon: "💻" },
-    { name: "Python", category: "AI/ML", icon: "🐍" },
-    { name: "React", category: "Frontend", icon: "⚛️" },
-    { name: "TensorFlow", category: "AI/ML", icon: "🧠" },
-    { name: "Adobe XD", category: "Design", icon: "🎭" },
-    { name: "Jupyter", category: "Data Science", icon: "📊" },
-    { name: "Sketch", category: "Design", icon: "✏️" },
-  ]
+    {
+      name: "Figma",
+      category: "Design",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+    },
+    {
+      name: "VS Code",
+      category: "Development",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+    },
+    {
+      name: "Python",
+      category: "AI/ML",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    },
+    {
+      name: "React",
+      category: "Frontend",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    },
+    {
+      name: "TensorFlow",
+      category: "AI/ML",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+    },
+    {
+      name: "Adobe XD",
+      category: "Design",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-plain.svg",
+    },
+    {
+      name: "Jupyter",
+      category: "Data Science",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg",
+    },
+    {
+      name: "Sketch",
+      category: "Design",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sketch/sketch-original.svg",
+    },
+  ];
+
 
   return (
     <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
@@ -68,11 +104,12 @@ const Skills = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gold-600 via-silver-600 to-platinum-600 bg-clip-text text-transparent">
             Skills & Expertise
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            A comprehensive overview of my technical skills and creative abilities
+          <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
+            Merging advanced AI development with refined design to craft purposeful, high-quality digital experiences.
+
           </p>
         </motion.div>
 
@@ -97,7 +134,7 @@ const Skills = () => {
           transition={{ duration: 0.8 }}
           className="mb-20"
         >
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Tools & Technologies</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-zinc-900 dark:text-white">Tools & Technologies</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {tools.map((tool, index) => (
               <motion.div
@@ -106,35 +143,44 @@ const Skills = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
-                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center group"
+                className="bg-white/80 dark:bg-obsidian-800/70 p-6 rounded-xl shadow-luxury hover:shadow-luxury-lg transition-all duration-300 text-center backdrop-blur-md"
               >
-                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">{tool.icon}</div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{tool.name}</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{tool.category}</p>
+                <div className="flex justify-center mb-3">
+                  <img
+                    src={tool.logo}
+                    alt={tool.name}
+                    className="h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+                <h3 className="font-semibold text-zinc-900 dark:text-white mb-1">{tool.name}</h3>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400">{tool.category}</p>
               </motion.div>
             ))}
           </div>
+
         </motion.div>
 
         {/* Soft Skills */}
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Soft Skills</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-zinc-900 dark:text-white">
+            Professional Excellence
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 icon: Zap,
-                title: "Problem Solving",
-                description: "Analytical thinking and creative solutions to complex challenges",
+                title: "Strategic Thinking",
+                description: "Analytical approach to complex AI and design challenges",
               },
               {
                 icon: Globe,
-                title: "Communication",
-                description: "Clear articulation of ideas and effective collaboration",
+                title: "Client Relations",
+                description: "Premium service delivery and luxury client experience",
               },
               {
                 icon: Database,
-                title: "Project Management",
-                description: "Organized approach to planning and executing projects",
+                title: "Project Leadership",
+                description: "Executive-level project management and team coordination",
               },
             ].map((skill, index) => (
               <motion.div
@@ -142,13 +188,13 @@ const Skills = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center"
+                className="bg-white dark:bg-obsidian-800 p-6 rounded-xl shadow-luxury text-center"
               >
-                <div className="inline-flex p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mb-4">
+                <div className="inline-flex p-4 rounded-full bg-gradient-to-r from-gold-500 via-gold-600 to-gold-700 mb-4">
                   <skill.icon className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">{skill.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400">{skill.description}</p>
+                <h3 className="text-xl font-bold mb-3 text-zinc-900 dark:text-white">{skill.title}</h3>
+                <p className="text-zinc-600 dark:text-zinc-400">{skill.description}</p>
               </motion.div>
             ))}
           </div>

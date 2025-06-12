@@ -92,7 +92,7 @@ const Certifications = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gold-600 via-silver-600 to-platinum-600 bg-clip-text text-transparent">
             Certifications
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
@@ -109,7 +109,7 @@ const Certifications = () => {
         >
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gold-600 to-silver-600 bg-clip-text text-transparent mb-2">
                 {stat.number}
               </div>
               <div className="text-gray-600 dark:text-gray-400 font-medium">{stat.label}</div>
@@ -129,7 +129,7 @@ const Certifications = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 md:p-12"
+          className="bg-gradient-to-r from-platinum-50 to-gold-50 dark:from-obsidian-900/20 dark:to-gold-900/20 rounded-2xl p-8 md:p-12"
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">My Learning Journey</h2>
@@ -141,7 +141,9 @@ const Certifications = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-                <Award className="h-6 w-6 mr-2 text-blue-600" />
+                <div className="inline-flex p-4 rounded-full bg-gradient-to-r from-gold-500 via-gold-600 to-gold-700 mb-4">
+                  <Award className="h-6 w-6 mr-2 text-white" />
+                </div>
                 Current Focus
               </h3>
               <ul className="space-y-3">

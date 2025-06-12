@@ -5,48 +5,48 @@
 
 @layer base {
   :root {
-    --background: 248 250 252;
-    --foreground: 15 23 42;
+    --background: 250 250 250;
+    --foreground: 23 23 23;
     --card: 255 255 255;
-    --card-foreground: 15 23 42;
+    --card-foreground: 23 23 23;
     --popover: 255 255 255;
-    --popover-foreground: 15 23 42;
-    --primary: 139 92 246;
-    --primary-foreground: 248 250 252;
-    --secondary: 241 245 249;
-    --secondary-foreground: 15 23 42;
-    --muted: 241 245 249;
-    --muted-foreground: 100 116 139;
-    --accent: 241 245 249;
-    --accent-foreground: 15 23 42;
+    --popover-foreground: 23 23 23;
+    --primary: 212 175 55;
+    --primary-foreground: 23 23 23;
+    --secondary: 245 245 245;
+    --secondary-foreground: 23 23 23;
+    --muted: 245 245 245;
+    --muted-foreground: 115 115 115;
+    --accent: 245 245 245;
+    --accent-foreground: 23 23 23;
     --destructive: 239 68 68;
-    --destructive-foreground: 248 250 252;
-    --border: 226 232 240;
-    --input: 226 232 240;
-    --ring: 139 92 246;
+    --destructive-foreground: 250 250 250;
+    --border: 229 229 229;
+    --input: 229 229 229;
+    --ring: 212 175 55;
     --radius: 1rem;
   }
 
   .dark {
-    --background: 8 12 23;
-    --foreground: 248 250 252;
-    --card: 15 23 42;
-    --card-foreground: 248 250 252;
-    --popover: 15 23 42;
-    --popover-foreground: 248 250 252;
-    --primary: 167 139 250;
-    --primary-foreground: 8 12 23;
-    --secondary: 30 41 59;
-    --secondary-foreground: 248 250 252;
-    --muted: 30 41 59;
-    --muted-foreground: 148 163 184;
-    --accent: 30 41 59;
-    --accent-foreground: 248 250 252;
+    --background: 9 9 11;
+    --foreground: 250 250 250;
+    --card: 23 23 23;
+    --card-foreground: 250 250 250;
+    --popover: 23 23 23;
+    --popover-foreground: 250 250 250;
+    --primary: 234 179 8;
+    --primary-foreground: 9 9 11;
+    --secondary: 39 39 42;
+    --secondary-foreground: 250 250 250;
+    --muted: 39 39 42;
+    --muted-foreground: 161 161 170;
+    --accent: 39 39 42;
+    --accent-foreground: 250 250 250;
     --destructive: 248 113 113;
-    --destructive-foreground: 8 12 23;
-    --border: 30 41 59;
-    --input: 30 41 59;
-    --ring: 167 139 250;
+    --destructive-foreground: 9 9 11;
+    --border: 39 39 42;
+    --input: 39 39 42;
+    --ring: 234 179 8;
   }
 }
 
@@ -63,52 +63,52 @@ html {
 body {
   font-family: "Inter", sans-serif;
   line-height: 1.6;
-  color: #0f172a;
-  background-color: #f8fafc;
+  color: #171717;
+  background-color: #fafafa;
 }
 
 .dark body {
-  color: #f8fafc;
-  background-color: #080c17;
+  color: #fafafa;
+  background-color: #09090b;
 }
 
-/* Custom scrollbar with rounded corners */
+/* Custom scrollbar with luxury styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f5f5f5;
   border-radius: 8px;
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: #27272a;
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+  background: linear-gradient(135deg, #d4af37, #c9a96e);
   border-radius: 8px;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #475569, #64748b);
+  background: linear-gradient(135deg, #eab308, #d4af37);
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #94a3b8, #64748b);
+  background: linear-gradient(135deg, #c9a96e, #b8860b);
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #64748b, #475569);
+  background: linear-gradient(135deg, #d4af37, #b8860b);
 }
 
 /* Grid pattern background */
 .bg-grid-pattern {
-  background-image: linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -118,15 +118,15 @@ body {
 }
 
 .prose h2 {
-  @apply text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-slate-100;
+  @apply text-2xl font-bold mt-8 mb-4 text-zinc-900 dark:text-zinc-100;
 }
 
 .prose h3 {
-  @apply text-xl font-bold mt-6 mb-3 text-slate-900 dark:text-slate-100;
+  @apply text-xl font-bold mt-6 mb-3 text-zinc-900 dark:text-zinc-100;
 }
 
 .prose p {
-  @apply mb-4 text-slate-700 dark:text-slate-300 leading-relaxed;
+  @apply mb-4 text-zinc-700 dark:text-zinc-300 leading-relaxed;
 }
 
 .prose ul {
@@ -134,11 +134,11 @@ body {
 }
 
 .prose li {
-  @apply text-slate-700 dark:text-slate-300;
+  @apply text-zinc-700 dark:text-zinc-300;
 }
 
 .prose strong {
-  @apply font-semibold text-slate-900 dark:text-slate-100;
+  @apply font-semibold text-zinc-900 dark:text-zinc-100;
 }
 
 /* Animation utilities */
@@ -156,9 +156,9 @@ body {
   animation: float 4s ease-in-out infinite;
 }
 
-/* Enhanced gradient text */
+/* Luxury gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 50%, #10b981 100%);
+  background: linear-gradient(135deg, #d4af37 0%, #c0c0c0 50%, #fafafa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -179,7 +179,7 @@ body {
 
 /* Enhanced focus styles */
 .focus-ring {
-  @apply focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 focus:ring-opacity-50;
+  @apply focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 dark:focus:ring-offset-zinc-800 focus:ring-opacity-50;
 }
 
 /* Smooth transitions */
@@ -187,13 +187,13 @@ body {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Enhanced button styles */
+/* Luxury button styles */
 .btn-primary {
-  @apply px-8 py-4 bg-gradient-to-r from-violet-600 via-cyan-600 to-emerald-600 text-white rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 focus-ring transform hover:scale-105;
+  @apply px-8 py-4 bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 text-zinc-900 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 focus-ring transform hover:scale-105;
 }
 
 .btn-secondary {
-  @apply px-8 py-4 border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 rounded-2xl font-semibold hover:border-violet-500 dark:hover:border-violet-400 hover:bg-violet-50 dark:hover:bg-violet-900/10 transition-all duration-300 focus-ring transform hover:scale-105;
+  @apply px-8 py-4 border-2 border-zinc-300 dark:border-zinc-600 text-zinc-700 dark:text-zinc-300 rounded-2xl font-semibold hover:border-amber-500 dark:hover:border-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/10 transition-all duration-300 focus-ring transform hover:scale-105;
 }
 
 /* Loading animation */
@@ -214,18 +214,18 @@ body {
 
 /* Text selection */
 ::selection {
-  background-color: rgba(139, 92, 246, 0.2);
+  background-color: rgba(212, 175, 55, 0.2);
 }
 
 .dark ::selection {
-  background-color: rgba(139, 92, 246, 0.4);
+  background-color: rgba(234, 179, 8, 0.4);
 }
 
 /* Enhanced form inputs */
 input,
 textarea,
 select {
-  @apply rounded-xl border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-200;
+  @apply rounded-xl border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200;
 }
 
 /* Enhanced buttons */
@@ -235,7 +235,7 @@ button {
 
 /* Enhanced cards */
 .card {
-  @apply rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20 dark:border-slate-700/20;
+  @apply rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20 dark:border-zinc-700/20;
 }
 
 /* Print styles */
@@ -256,4 +256,78 @@ button {
 
 .dark .text-shadow {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Luxury metallic effects */
+.gold-shimmer {
+  background: linear-gradient(45deg, #d4af37, #ffd700, #d4af37);
+  background-size: 200% 200%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.silver-shimmer {
+  background: linear-gradient(45deg, #c0c0c0, #e5e5e5, #c0c0c0);
+  background-size: 200% 200%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+:root {
+  --gold: #ffb338;
+  --light-shadow: #77571d;
+  --dark-shadow: #3e2904;
+}
+
+/* Container setup */
+.design-wrapper {
+  display: grid;
+  grid-template-areas: 'overlap';
+  position: relative;
+  line-height: 1;
+}
+
+.design-wrapper > div {
+  grid-area: overlap;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  letter-spacing: 1px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #363833;
+  -webkit-text-stroke: 3px transparent;
+}
+
+.design-bg {
+  background-image: repeating-linear-gradient(
+    105deg,
+    var(--gold) 0%,
+    var(--dark-shadow) 5%,
+    var(--gold) 12%
+  );
+  color: transparent;
+  filter: drop-shadow(3px 6px 6px black);
+  transform: scaleY(1.05);
+  transform-origin: top;
+}
+
+.design-fg {
+  background-image: repeating-linear-gradient(
+    5deg,
+    var(--gold) 0%,
+    var(--light-shadow) 23%,
+    var(--gold) 31%
+  );
+  color: #1e2127;
+  /* transform: scale(1); */
+}
+
+
+
+@keyframes shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }

@@ -11,32 +11,32 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "AI-Powered Design Assistant",
+      title: "Luxury AI Design Assistant",
       description:
-        "An intelligent design tool that suggests color palettes, layouts, and typography based on content analysis.",
+        "Premium AI tool that suggests sophisticated color palettes, layouts, and typography for luxury brands.",
       image: "/placeholder.svg?height=300&width=400",
       category: "ai",
-      tags: ["Machine Learning", "React", "Python", "Design"],
+      tags: ["Machine Learning", "React", "Python", "Luxury Design"],
       github: "#",
       demo: "#",
       featured: true,
     },
     {
       id: 2,
-      title: "Smart E-commerce Platform",
-      description: "A modern e-commerce platform with AI-driven product recommendations and intuitive user experience.",
+      title: "Premium E-commerce Platform",
+      description: "Exclusive e-commerce platform with AI-driven recommendations and luxury user experience.",
       image: "/placeholder.svg?height=300&width=400",
       category: "design",
-      tags: ["UI/UX", "Figma", "React", "Node.js"],
+      tags: ["Premium UI/UX", "Figma", "React", "Node.js"],
       github: "#",
       demo: "#",
       featured: true,
     },
     {
       id: 3,
-      title: "Neural Network Visualizer",
+      title: "Neural Network Visualizer Pro",
       description:
-        "Interactive tool for visualizing and understanding neural network architectures and training processes.",
+        "Professional tool for visualizing complex neural network architectures with luxury interface design.",
       image: "/placeholder.svg?height=300&width=400",
       category: "ai",
       tags: ["Deep Learning", "D3.js", "Python", "TensorFlow"],
@@ -46,19 +46,19 @@ const Projects = () => {
     },
     {
       id: 4,
-      title: "Mobile Banking App",
-      description: "Clean and secure mobile banking interface with focus on accessibility and user experience.",
+      title: "Luxury Banking App",
+      description: "Premium mobile banking interface designed for high-net-worth individuals.",
       image: "/placeholder.svg?height=300&width=400",
       category: "design",
-      tags: ["Mobile Design", "Figma", "Prototyping"],
+      tags: ["Mobile Design", "Figma", "Premium UX"],
       github: "#",
       demo: "#",
       featured: false,
     },
     {
       id: 5,
-      title: "Sentiment Analysis Dashboard",
-      description: "Real-time sentiment analysis of social media data with beautiful data visualizations.",
+      title: "AI Sentiment Analysis Suite",
+      description: "Enterprise-grade sentiment analysis with premium data visualizations.",
       image: "/placeholder.svg?height=300&width=400",
       category: "ai",
       tags: ["NLP", "React", "Python", "Data Viz"],
@@ -68,8 +68,8 @@ const Projects = () => {
     },
     {
       id: 6,
-      title: "Design System Library",
-      description: "Comprehensive design system with reusable components and design tokens for consistent branding.",
+      title: "Luxury Design System",
+      description: "Comprehensive design system for premium brands with AI-powered components.",
       image: "/placeholder.svg?height=300&width=400",
       category: "design",
       tags: ["Design Systems", "Figma", "Documentation"],
@@ -83,8 +83,8 @@ const Projects = () => {
 
   const filterOptions = [
     { value: "all", label: "All Projects", icon: Filter },
-    { value: "ai", label: "AI Projects", icon: Brain },
-    { value: "design", label: "Design Projects", icon: Palette },
+    { value: "ai", label: "AI Solutions", icon: Brain },
+    { value: "design", label: "Luxury Design", icon: Palette },
   ]
 
   return (
@@ -97,11 +97,11 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            My Projects
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gold-600 via-silver-600 to-platinum-600 bg-clip-text text-transparent">
+            Premium Portfolio
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            A showcase of my work in AI development and creative design
+          <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
+            Exclusive AI solutions and luxury design projects
           </p>
         </motion.div>
 
@@ -118,8 +118,8 @@ const Projects = () => {
               onClick={() => setFilter(option.value)}
               className={`flex items-center space-x-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                 filter === option.value
-                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
-                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 shadow-md"
+                  ? "bg-gradient-to-r from-gold-500 via-gold-600 to-gold-700 text-white shadow-luxury"
+                  : "bg-white dark:bg-obsidian-800 text-zinc-700 dark:text-zinc-300 hover:bg-platinum-50 dark:hover:bg-obsidian-700 shadow-md"
               }`}
             >
               <option.icon className="h-5 w-5" />
@@ -136,7 +136,7 @@ const Projects = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="mb-16"
           >
-            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">Featured Projects</h2>
+            <h2 className="text-3xl font-bold mb-8 text-zinc-900 dark:text-white">Featured Projects</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {projects
                 .filter((p) => p.featured)
@@ -153,7 +153,7 @@ const Projects = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
+          <h2 className="text-3xl font-bold mb-8 text-zinc-900 dark:text-white">
             {filter === "all" ? "All Projects" : `${filterOptions.find((o) => o.value === filter)?.label}`}
           </h2>
           <AnimatePresence mode="wait">
@@ -177,16 +177,16 @@ const Projects = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mt-20 p-12 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl"
+          className="text-center mt-20 p-12 bg-gradient-to-r from-platinum-50 to-gold-50 dark:from-obsidian-900/20 dark:to-gold-900/20 rounded-2xl"
         >
-          <h3 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Interested in collaborating?</h3>
-          <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">Let's create something amazing together</p>
+          <h3 className="text-3xl font-bold mb-4 text-zinc-900 dark:text-white">Ready for Premium Collaboration?</h3>
+          <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-8">Let&apos;s create something extraordinary together</p>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-shadow"
+            className="px-8 py-4 bg-gradient-to-r from-gold-500 via-gold-600 to-gold-700 text-white rounded-full font-semibold shadow-luxury hover:shadow-luxury-lg transition-shadow"
           >
-            Get In Touch
+            Start Your Project
           </motion.button>
         </motion.div>
       </div>
