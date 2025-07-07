@@ -40,7 +40,7 @@ const Certifications = () => {
       title: "Relational Database Certification",
       issuer: "freeCodeCamp",
       date: "2024",
-      image: "./relational_db.png", // save this image in your /public folder
+      image: "./relational_db.PNG", // save this image in your /public folder
       description:
         "Comprehensive certification covering SQL, PostgreSQL, and the fundamentals of working with relational databases, including designing schemas, managing data, and writing complex queries.",
       skills: [
@@ -58,7 +58,7 @@ const Certifications = () => {
       title: "Supervised Machine Learning: Regression and Classification",
       issuer: "Stanford University (Coursera)",
       date: "2024",
-      image: "./supervised.png", // Save your certificate image in /public/
+      image: "./supervised.PNG", // Save your certificate image in /public/
       description:
         "Introductory course in supervised learning covering linear and logistic regression, gradient descent, and model evaluation techniques using real-world data.",
       skills: [
@@ -77,7 +77,7 @@ const Certifications = () => {
       title: "Responsive Web Design Certification",
       issuer: "freeCodeCamp",
       date: "2024",
-      image: "./responsive_web_design.png", // Save this certificate image in your /public/ folder
+      image: "./responsive_web_design.PNG", // Save this certificate image in your /public/ folder
       description:
         "Certification covering HTML, CSS, Flexbox, Grid, and the principles of building modern, responsive websites that adapt seamlessly to different devices and screen sizes.",
       skills: [
@@ -93,7 +93,7 @@ const Certifications = () => {
       title: "JavaScript Algorithms and Data Structures Certification",
       issuer: "freeCodeCamp",
       date: "2024",
-      image: "./js.png", // Save this certificate image in your /public/ folder
+      image: "./js.PNG", // Save this certificate image in your /public/ folder
       description:
         "Certification covering fundamental and advanced concepts of JavaScript, including ES6, regular expressions, data structures, algorithms, and problem-solving skills essential for web development.",
       skills: [
