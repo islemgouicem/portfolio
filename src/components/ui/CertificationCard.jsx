@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { ExternalLink, CheckCircle, Calendar } from "lucide-react"
 import { useInView } from "react-intersection-observer"
+import PropTypes from "prop-types"
 
 const CertificationCard = ({ certification, delay = 0 }) => {
   const [ref, inView] = useInView({
@@ -62,6 +63,8 @@ const CertificationCard = ({ certification, delay = 0 }) => {
 
         <a
           href={certification.credentialUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium text-sm"
         >
           <span>View Credential</span>
@@ -70,6 +73,19 @@ const CertificationCard = ({ certification, delay = 0 }) => {
       </div>
     </motion.div>
   )
+}
+CertificationCard.propTypes = {
+  certification: PropTypes.shape({
+    image: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    verified: PropTypes.bool,
+    issuer: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    skills: PropTypes.arrayOf(PropTypes.string).isRequired,
+    credentialUrl: PropTypes.string.isRequired,
+  }).isRequired,
+  delay: PropTypes.number,
 }
 
 export default CertificationCard

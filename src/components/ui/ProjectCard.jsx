@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { ExternalLink, Github } from "lucide-react"
 import { useInView } from "react-intersection-observer"
+import PropTypes from "prop-types"
 
 const ProjectCard = ({ project, delay = 0, featured = false }) => {
   const [ref, inView] = useInView({
@@ -44,6 +45,8 @@ const ProjectCard = ({ project, delay = 0, featured = false }) => {
           <div className="flex space-x-2">
             <a
               href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
             >
               <Github className="h-4 w-4 text-gray-600 dark:text-gray-400" />
@@ -76,6 +79,18 @@ const ProjectCard = ({ project, delay = 0, featured = false }) => {
       </div>
     </motion.div>
   )
+}
+ProjectCard.propTypes = {
+  project: PropTypes.shape({
+    image: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+    github: PropTypes.string,
+    demo: PropTypes.string,
+  }).isRequired,
+  delay: PropTypes.number,
+  featured: PropTypes.bool,
 }
 
 export default ProjectCard

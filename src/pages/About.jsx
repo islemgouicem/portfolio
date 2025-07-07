@@ -66,16 +66,16 @@ const About = () => {
                   Design came first. Before diving into code or AI, there was always something fascinating
                   about how things look and feel — from colors and layouts to the little details that make an
                   interface clean, modern, and balanced. I spent a lot of time playing with visuals, tweaking
-                  UIs, and learning what makes a design not just look good, but work well. It wasn’t
+                  UIs, and learning what makes a design not just look good, but work well. It wasn&apos;t
                   about being an artist — it was about clarity, structure, and impact.
                 </p>
                 <p>
-                  Currently crafting exclusive AI solutions while designing premium digital experiences, I&aposve discovered
-                  that the intersection of these fields offers incredible opportunities to solve complex problems with
-                  sophisticated, elegant solutions.
+                  Aspiring to craft exclusive AI solutions while designing premium digital experiences, 
+                  I&apos;ve discovered that the intersection of these fields offers incredible opportunities 
+                  to solve complex problems with sophisticated, elegant solutions.
                 </p>
                 <p>
-                  When I&aposm not architecting neural networks or crafting luxury interfaces, you&aposll find me exploring the
+                  When I&apos;m not architecting neural networks or crafting luxury interfaces, you&apos;ll find me exploring the
                   latest in premium tech, experimenting with cutting-edge AI models, or contributing to exclusive
                   projects that redefine the boundaries between technology and luxury.
                 </p>

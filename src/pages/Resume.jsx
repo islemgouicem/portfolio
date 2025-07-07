@@ -128,7 +128,7 @@ const Resume = () => {
             </p>
           </div>
 
-          {/* Education */}
+          {/* Education
           <div className="mb-12">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Education</h3>
             <div className="border-l-4 border-gold-500 pl-6">
@@ -142,10 +142,10 @@ const Resume = () => {
                 Structures, Algorithms
               </p>
             </div>
-          </div>
+          </div> */}
 
           {/* Experience */}
-          <div className="mb-12">
+          {/* <div className="mb-12">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Experience</h3>
             <div className="space-y-8">
               <div className="border-l-4 border-silver-500 pl-6">
@@ -183,10 +183,10 @@ const Resume = () => {
                 </ul>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Skills */}
-          <div className="mb-12">
+          {/* <div className="mb-12">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Technical Skills</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
@@ -220,10 +220,10 @@ const Resume = () => {
                 </ul>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Projects */}
-          <div className="mb-12">
+          {/* <div className="mb-12">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Key Projects</h3>
             <div className="space-y-6">
               <div className="border-l-4 border-silver-500 pl-6">
@@ -248,10 +248,10 @@ const Resume = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Certifications */}
-          <div>
+          {/* <div>
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Certifications</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
@@ -268,7 +268,7 @@ const Resume = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </div>

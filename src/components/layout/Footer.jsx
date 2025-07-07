@@ -208,6 +208,7 @@ const Footer = () => {
                     <motion.a
                       key={index}
                       href={href}
+                      target="_blank"
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                       className={`flex items-center justify-center p-4 bg-slate-200/50 dark:bg-white/10 backdrop-blur-sm rounded-2xl ${color} transition-all duration-300 group border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20`}

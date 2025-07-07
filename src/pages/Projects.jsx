@@ -11,72 +11,29 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Luxury AI Design Assistant",
+      title: "Algreenia Afforestation Platform",
       description:
-        "Premium AI tool that suggests sophisticated color palettes, layouts, and typography for luxury brands.",
-      image: "/placeholder.svg?height=300&width=400",
-      category: "ai",
-      tags: ["Machine Learning", "React", "Python", "Luxury Design"],
-      github: "#",
-      demo: "#",
+        "Hybrid platform combining AI and community engagement for afforestation projects. Features include tree type identification, irrigation tracking, impact reporting, and volunteer management.",
+      image: "./public/algreenia.PNG",
+      category: "environment",
+      tags: ["AI", "Web Development", "Sustainability", "React", "Node.js"],
+      github: "#", // replace with actual URL
+      demo: "#", // replace with actual URL
       featured: true,
     },
     {
       id: 2,
-      title: "Premium E-commerce Platform",
-      description: "Exclusive e-commerce platform with AI-driven recommendations and luxury user experience.",
-      image: "/placeholder.svg?height=300&width=400",
-      category: "design",
-      tags: ["Premium UI/UX", "Figma", "React", "Node.js"],
-      github: "#",
-      demo: "#",
-      featured: true,
-    },
-    {
-      id: 3,
-      title: "Neural Network Visualizer Pro",
+      title: "AI Job Matching System",
       description:
-        "Professional tool for visualizing complex neural network architectures with luxury interface design.",
-      image: "/placeholder.svg?height=300&width=400",
+        "AI-powered platform that analyzes candidate profiles and job requirements to deliver precise talent matching. Features include smart resume parsing, skill-gap analysis, and personalized job recommendations for both employers and job seekers.",
+      image: "./public/job_matching.png", // place this SVG or image in your /public folder
       category: "ai",
-      tags: ["Deep Learning", "D3.js", "Python", "TensorFlow"],
-      github: "#",
-      demo: "#",
-      featured: false,
-    },
-    {
-      id: 4,
-      title: "Luxury Banking App",
-      description: "Premium mobile banking interface designed for high-net-worth individuals.",
-      image: "/placeholder.svg?height=300&width=400",
-      category: "design",
-      tags: ["Mobile Design", "Figma", "Premium UX"],
-      github: "#",
-      demo: "#",
-      featured: false,
-    },
-    {
-      id: 5,
-      title: "AI Sentiment Analysis Suite",
-      description: "Enterprise-grade sentiment analysis with premium data visualizations.",
-      image: "/placeholder.svg?height=300&width=400",
-      category: "ai",
-      tags: ["NLP", "React", "Python", "Data Viz"],
-      github: "#",
-      demo: "#",
-      featured: false,
-    },
-    {
-      id: 6,
-      title: "Luxury Design System",
-      description: "Comprehensive design system for premium brands with AI-powered components.",
-      image: "/placeholder.svg?height=300&width=400",
-      category: "design",
-      tags: ["Design Systems", "Figma", "Documentation"],
-      github: "#",
-      demo: "#",
-      featured: false,
-    },
+      tags: ["Web Development", "Python"],
+      github: "#", // replace with your real repository URL
+      demo: "#",   // replace with your live demo URL
+      featured: true,
+    }
+
   ]
 
   const filteredProjects = filter === "all" ? projects : projects.filter((project) => project.category === filter)
@@ -116,11 +73,10 @@ const Projects = () => {
             <button
               key={option.value}
               onClick={() => setFilter(option.value)}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                filter === option.value
-                  ? "bg-gradient-to-r from-gold-500 via-gold-600 to-gold-700 text-white shadow-luxury"
-                  : "bg-white dark:bg-obsidian-800 text-zinc-700 dark:text-zinc-300 hover:bg-platinum-50 dark:hover:bg-obsidian-700 shadow-md"
-              }`}
+              className={`flex items-center space-x-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${filter === option.value
+                ? "bg-gradient-to-r from-gold-500 via-gold-600 to-gold-700 text-white shadow-luxury"
+                : "bg-white dark:bg-obsidian-800 text-zinc-700 dark:text-zinc-300 hover:bg-platinum-50 dark:hover:bg-obsidian-700 shadow-md"
+                }`}
             >
               <option.icon className="h-5 w-5" />
               <span>{option.label}</span>

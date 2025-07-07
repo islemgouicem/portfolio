@@ -246,6 +246,7 @@ const Contact = () => {
                   <motion.a
                     key={index}
                     href={social.href}
+                    target="_blank"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className={`flex items-center space-x-3 p-4 bg-slate-200/50 dark:bg-white/10 backdrop-blur-sm rounded-lg border border-slate-200 dark:border-white/10 transition-all duration-300  text-gray-700 dark:text-gray-300 hover:text-white hover:border-slate-300 dark:hover:border-white/20 ${social.color}`}

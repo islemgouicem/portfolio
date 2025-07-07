@@ -11,68 +11,182 @@ const Certifications = () => {
       title: "Machine Learning Specialization",
       issuer: "Stanford University (Coursera)",
       date: "2024",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "./public/ml_spes.PNG?height=200&width=300",
       description:
         "Comprehensive course covering supervised learning, unsupervised learning, and best practices in machine learning.",
       skills: ["Machine Learning", "Python", "TensorFlow", "Neural Networks"],
-      credentialUrl: "#",
+      credentialUrl: "https://www.coursera.org/account/accomplishments/specialization/O0BB7JL5J0TY",
       verified: true,
     },
     {
       id: 2,
-      title: "Google UX Design Certificate",
-      issuer: "Google (Coursera)",
-      date: "2023",
-      image: "/placeholder.svg?height=200&width=300",
-      description: "Complete UX design process from user research to prototyping and testing.",
-      skills: ["UX Design", "Figma", "User Research", "Prototyping"],
-      credentialUrl: "#",
+      title: "Unsupervised Learning, Recommenders, Reinforcement Learning",
+      issuer: "DeepLearning.AI (Coursera)",
+      date: "2024",
+      image: "./public/unsupervisedlr_reco_rl.PNG", // Save this image in your /public folder
+      description:
+        "Specialized course exploring clustering, dimensionality reduction, recommender systems, and reinforcement learning techniques to build intelligent applications.",
+      skills: [
+        "Unsupervised Learning",
+        "Recommender Systems",
+        "Reinforcement Learning",
+        "TensorFlow"
+      ],
+      credentialUrl: "https://coursera.org/share/c38605a0d1f7eaa59f2a79ab90eb408c", // Replace with your real credential URL once you complete it
       verified: true,
     },
     {
       id: 3,
-      title: "Deep Learning Specialization",
-      issuer: "DeepLearning.AI",
+      title: "Relational Database Certification",
+      issuer: "freeCodeCamp",
       date: "2024",
-      image: "/placeholder.svg?height=200&width=300",
-      description: "Advanced deep learning concepts including CNNs, RNNs, and sequence models.",
-      skills: ["Deep Learning", "CNN", "RNN", "PyTorch"],
-      credentialUrl: "#",
+      image: "./public/relational_db.png", // save this image in your /public folder
+      description:
+        "Comprehensive certification covering SQL, PostgreSQL, and the fundamentals of working with relational databases, including designing schemas, managing data, and writing complex queries.",
+      skills: [
+        "SQL",
+        "PostgreSQL",
+        "Database Design",
+        "Data Modeling",
+        "Bash"
+      ],
+      credentialUrl: "https://freecodecamp.org/certification/fcca84b3f7e-c71e-4661-b1c3-ef0b801be95b/relational-database-v8", // replace with your real freeCodeCamp certificate URL
       verified: true,
     },
     {
       id: 4,
-      title: "AWS Certified Cloud Practitioner",
-      issuer: "Amazon Web Services",
-      date: "2023",
-      image: "/placeholder.svg?height=200&width=300",
-      description: "Foundational understanding of AWS cloud services and architecture.",
-      skills: ["AWS", "Cloud Computing", "DevOps"],
-      credentialUrl: "#",
+      title: "Supervised Machine Learning: Regression and Classification",
+      issuer: "Stanford University (Coursera)",
+      date: "2024",
+      image: "./public/supervised.png", // Save your certificate image in /public/
+      description:
+        "Introductory course in supervised learning covering linear and logistic regression, gradient descent, and model evaluation techniques using real-world data.",
+      skills: [
+        "Supervised Learning",
+        "Linear Regression",
+        "Logistic Regression",
+        "Gradient Descent",
+        "Python",
+        "Model Evaluation"
+      ],
+      credentialUrl: "https://coursera.org/share/aa23900843e2a2e9125946990538a177", // Replace with your actual Coursera certificate link
       verified: true,
     },
     {
       id: 5,
-      title: "React Developer Certification",
-      issuer: "Meta (Facebook)",
-      date: "2023",
-      image: "/placeholder.svg?height=200&width=300",
-      description: "Advanced React concepts including hooks, context, and performance optimization.",
-      skills: ["React", "JavaScript", "Frontend Development"],
-      credentialUrl: "#",
+      title: "Responsive Web Design Certification",
+      issuer: "freeCodeCamp",
+      date: "2024",
+      image: "./public/responsive_web_design.png", // Save this certificate image in your /public/ folder
+      description:
+        "Certification covering HTML, CSS, Flexbox, Grid, and the principles of building modern, responsive websites that adapt seamlessly to different devices and screen sizes.",
+      skills: [
+        "HTML",
+        "CSS",
+        "Responsive Design",
+      ],
+      credentialUrl: "https://freecodecamp.org/certification/fcca84b3f7e-c71e-4661-b1c3-ef0b801be95b/responsive-web-design", // Replace with your real freeCodeCamp certificate URL
       verified: true,
     },
     {
       id: 6,
-      title: "Adobe Certified Expert",
-      issuer: "Adobe",
-      date: "2022",
-      image: "/placeholder.svg?height=200&width=300",
-      description: "Expertise in Adobe Creative Suite for professional design work.",
-      skills: ["Adobe Photoshop", "Illustrator", "XD", "Design"],
-      credentialUrl: "#",
+      title: "JavaScript Algorithms and Data Structures Certification",
+      issuer: "freeCodeCamp",
+      date: "2024",
+      image: "./public/js.png", // Save this certificate image in your /public/ folder
+      description:
+        "Certification covering fundamental and advanced concepts of JavaScript, including ES6, regular expressions, data structures, algorithms, and problem-solving skills essential for web development.",
+      skills: [
+        "JavaScript",
+        "Algorithms",
+        "Data Structures",
+        "ES6",
+        "Debugging",
+        "Problem Solving"
+      ],
+      credentialUrl: "https://freecodecamp.org/certification/fcca84b3f7e-c71e-4661-b1c3-ef0b801be95b/javascript-algorithms-and-data-structures-v8", // Replace with your actual freeCodeCamp certificate URL
       verified: true,
     },
+    {
+      id: 7,
+      title: "Advanced Learning Algorithms",
+      issuer: "DeepLearning.AI (Coursera)",
+      date: "2024",
+      image: "./public/advanced_algos.jpeg", // Save this certificate image in your /public/ folder
+      description:
+        "Course focused on advanced machine learning concepts, including neural networks, hyperparameter tuning, regularization techniques, and strategies for building high-performance ML models.",
+      skills: [
+        "Neural Networks",
+        "Regularization",
+        "Hyperparameter Tuning",
+        "Machine Learning",
+        "Python",
+        "Model Optimization"
+      ],
+      credentialUrl: "https://coursera.org/share/03ecac1d6b3a15616e2ea6f7ec00e958", // Replace with your actual Coursera certificate link
+      verified: true,
+    }
+
+
+
+
+
+
+    // {
+    //   id: 2,
+    //   title: "Google UX Design Certificate",
+    //   issuer: "Google (Coursera)",
+    //   date: "2023",
+    //   image: "/placeholder.svg?height=200&width=300",
+    //   description: "Complete UX design process from user research to prototyping and testing.",
+    //   skills: ["UX Design", "Figma", "User Research", "Prototyping"],
+    //   credentialUrl: "#",
+    //   verified: true,
+    // },
+    // {
+    //   id: 3,
+    //   title: "Deep Learning Specialization",
+    //   issuer: "DeepLearning.AI",
+    //   date: "2024",
+    //   image: "/placeholder.svg?height=200&width=300",
+    //   description: "Advanced deep learning concepts including CNNs, RNNs, and sequence models.",
+    //   skills: ["Deep Learning", "CNN", "RNN", "PyTorch"],
+    //   credentialUrl: "#",
+    //   verified: true,
+    // },
+    // {
+    //   id: 4,
+    //   title: "AWS Certified Cloud Practitioner",
+    //   issuer: "Amazon Web Services",
+    //   date: "2023",
+    //   image: "/placeholder.svg?height=200&width=300",
+    //   description: "Foundational understanding of AWS cloud services and architecture.",
+    //   skills: ["AWS", "Cloud Computing", "DevOps"],
+    //   credentialUrl: "#",
+    //   verified: true,
+    // },
+    // {
+    //   id: 5,
+    //   title: "React Developer Certification",
+    //   issuer: "Meta (Facebook)",
+    //   date: "2023",
+    //   image: "/placeholder.svg?height=200&width=300",
+    //   description: "Advanced React concepts including hooks, context, and performance optimization.",
+    //   skills: ["React", "JavaScript", "Frontend Development"],
+    //   credentialUrl: "#",
+    //   verified: true,
+    // },
+    // {
+    //   id: 6,
+    //   title: "Adobe Certified Expert",
+    //   issuer: "Adobe",
+    //   date: "2022",
+    //   image: "/placeholder.svg?height=200&width=300",
+    //   description: "Expertise in Adobe Creative Suite for professional design work.",
+    //   skills: ["Adobe Photoshop", "Illustrator", "XD", "Design"],
+    //   credentialUrl: "#",
+    //   verified: true,
+    // },
   ]
 
   const stats = [
@@ -148,10 +262,10 @@ const Certifications = () => {
               </h3>
               <ul className="space-y-3">
                 {[
-                  "Advanced Computer Vision",
-                  "Generative AI & LLMs",
-                  "Design Systems at Scale",
-                  "AI Ethics & Responsible AI",
+                  "Deep Learning & Machine Learning",
+                  "Mobile App Development",
+                  "Web Development & Modern Frameworks",
+                  "AI Fundamentals & Applied AI",
                 ].map((item, index) => (
                   <li key={index} className="flex items-center text-gray-600 dark:text-gray-400">
                     <CheckCircle className="h-5 w-5 mr-3 text-green-500" />
@@ -171,7 +285,6 @@ const Certifications = () => {
                   "TensorFlow Developer Certificate",
                   "Advanced React Patterns",
                   "Design Leadership Course",
-                  "MLOps Specialization",
                 ].map((item, index) => (
                   <li key={index} className="flex items-center text-gray-600 dark:text-gray-400">
                     <div className="h-5 w-5 mr-3 border-2 border-gray-300 dark:border-gray-600 rounded" />
