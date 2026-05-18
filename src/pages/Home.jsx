@@ -124,10 +124,10 @@ const Home = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-white dark:to-zinc-300 bg-clip-text text-transparent">
-              Where Elegance Meets Intelligence
+              What I Do Best
             </h2>
             <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
-              Fusing advanced AI with refined design principles to craft seamless, high-end digital experiences.
+              Combining AI with thoughtful design to build clean, functional digital experiences.
             </p>
           </motion.div>
 
@@ -135,27 +135,27 @@ const Home = () => {
             {[
               {
                 icon: Code2,
-                title: "AI Architecture",
+                title: "AI & Machine Learning",
                 description:
-                  "Building sophisticated AI systems with enterprise-grade performance and luxury-level attention to detail.",
+                  "Building AI models and systems for real problems",
                 gradient: "from-gold-500 to-gold-600",
-                features: ["Neural Networks", "Deep Learning", "MLOps", "AI Strategy"],
+                features: ["Deep Learning", "Machine Learning", "Computer Vision"],
               },
               {
                 icon: Palette,
-                title: "Premium Design",
+                title: "Design & UI",
                 description:
-                  "Creating exceptional user experiences that embody luxury, sophistication, and cutting-edge innovation.",
+                  "Creating clean, user-friendly interfaces with attention to detail and thoughtful design patterns.",
                 gradient: "from-silver-500 to-silver-600",
-                features: ["Luxury UX", "Design Systems", "Brand Identity", "Premium UI"],
+                features: ["UI Design", "User Experience", "Design Systems", "Responsive Design"],
               },
               {
                 icon: Sparkles,
-                title: "Tech Innovation",
+                title: "Full-Stack Development",
                 description:
-                  "Pioneering the future of AI-powered design with exclusive solutions for discerning clients.",
+                  "Building complete web applications with modern tools and frameworks.",
                 gradient: "from-platinum-500 to-platinum-600",
-                features: ["AI Integration", "Custom Solutions", "Tech Leadership", "Innovation"],
+                features: ["React", "Backend APIs", "Web Optimization", "Problem Solving"],
               },
             ].map((feature, index) => (
               <FloatingCard key={index} delay={index * 0.2}>

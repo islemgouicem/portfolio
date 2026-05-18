@@ -10,13 +10,13 @@ const Skills = () => {
       title: "Artificial Intelligence",
       color: "from-gold-500 to-gold-700",
       skills: [
-        { name: "Python", level: 85 },
-        { name: "Data Science", level: 60 },
+        { name: "Python", level: 90 },
+        { name: "Data Science", level: 70 },
         { name: "TensorFlow/PyTorch", level: 40 },
-        { name: "Machine Learning", level: 10 },
-        { name: "Deep Learning", level: 10 },
-        { name: "Natural Language Processing", level: 10 },
-        { name: "Computer Vision", level: 10 },
+        { name: "Machine Learning", level: 65 },
+        { name: "Deep Learning", level: 45 },
+        { name: "Natural Language Processing", level: 35 },
+        { name: "Computer Vision", level: 35 },
       ],
     },
     {
@@ -26,25 +26,26 @@ const Skills = () => {
       skills: [
         { name: "Adobe Illustrator", level: 70 },
         { name: "Adobe Photoshop", level: 50 },
-        { name: "Figma", level: 50 },
-        { name: "UI/UX", level: 50 },
-        { name: "Web Design", level: 60 },
-        { name: "Design Systems", level: 50 },
-        { name: "User Research", level: 50 },
+        { name: "Figma", level: 65 },
+        { name: "UI/UX", level: 60 },
+        { name: "Web Design", level: 70 },
+        { name: "Mobile Design", level: 80 },
       ],
     },
     {
       icon: Code,
-      title: "Tech Architecture",
+      title: "Development",
       color: "from-platinum-500 to-platinum-700",
       skills: [
-        { name: "HTML+CSS", level: 90 },
-        { name: "Flask+PHP", level: 80 },
-        { name: "React", level: 60 },
-        { name: "Node.js/Next.js", level: 20 },
-        { name: "JavaScript/TypeScript", level: 60 },
-        { name: "SQL", level: 80 },
+        { name: "HTML+CSS+JS", level: 95 },
+        { name: "Flask-fastAPI+PHP", level: 80 },
+        { name: "React", level: 90 },
+        { name: "Tailwind+Boostrap", level: 80 },
+        { name: "Node.js/Next.js", level: 80 },
+        { name: "JavaScript/TypeScript", level: 90 },
+        { name: "SQL", level: 85 },
         { name: "Linux", level: 80 },
+        { name: "Flutter", level: 90 },
       ],
     },
   ]
@@ -108,8 +109,7 @@ const Skills = () => {
             Skills & Expertise
           </h1>
           <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
-            Merging advanced AI development with refined design to craft purposeful, high-quality digital experiences.
-
+            Building with AI, design, and modern web technologies
           </p>
         </motion.div>
 
@@ -163,7 +163,7 @@ const Skills = () => {
         {/* Soft Skills */}
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <h2 className="text-3xl font-bold text-center mb-12 text-zinc-900 dark:text-white">
-            Professional Excellence
+            Key Strengths
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -174,13 +174,13 @@ const Skills = () => {
               },
               {
                 icon: Globe,
-                title: "Client Relations",
-                description: "Premium service delivery and luxury client experience",
+                title: "Collaboration",
+                description: "Working effectively with others and communicating clearly",
               },
               {
                 icon: Database,
-                title: "Project Leadership",
-                description: "Executive-level project management and team coordination",
+                title: "Problem Solving",
+                description: "Breaking down complex problems and finding practical solutions",
               },
             ].map((skill, index) => (
               <motion.div

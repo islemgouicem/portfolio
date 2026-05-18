@@ -14,7 +14,7 @@ const Projects = () => {
       title: "Algreenia Afforestation Platform",
       description:
         "Hybrid platform combining AI and community engagement for afforestation projects. Features include tree type identification, irrigation tracking, impact reporting, and volunteer management.",
-      image: "./public/algreenia.PNG",
+      image: "/algreenia.PNG",
       category: "environment",
       tags: ["AI", "Web Development", "Sustainability", "React", "Node.js"],
       github: "#", // replace with actual URL
@@ -26,7 +26,7 @@ const Projects = () => {
       title: "AI Job Matching System",
       description:
         "AI-powered platform that analyzes candidate profiles and job requirements to deliver precise talent matching. Features include smart resume parsing, skill-gap analysis, and personalized job recommendations for both employers and job seekers.",
-      image: "./public/job_matching.png", // place this SVG or image in your /public folder
+      image: "/job_matching.png", // place this SVG or image in your /public folder
       category: "ai",
       tags: ["Web Development", "Python"],
       github: "#", // replace with your real repository URL
@@ -40,8 +40,8 @@ const Projects = () => {
 
   const filterOptions = [
     { value: "all", label: "All Projects", icon: Filter },
-    { value: "ai", label: "AI Solutions", icon: Brain },
-    { value: "design", label: "Luxury Design", icon: Palette },
+    { value: "ai", label: "AI Projects", icon: Brain },
+    { value: "design", label: "Design Projects", icon: Palette },
   ]
 
   return (
@@ -55,10 +55,10 @@ const Projects = () => {
           className="text-center mb-16"
         >
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gold-600 via-silver-600 to-platinum-600 bg-clip-text text-transparent">
-            Premium Portfolio
+            My Projects
           </h1>
           <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
-            Exclusive AI solutions and luxury design projects
+            A selection of projects combining AI, design, and web development
           </p>
         </motion.div>
 

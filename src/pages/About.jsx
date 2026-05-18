@@ -41,7 +41,7 @@ const About = () => {
                 </div>
               </div>
               <h2 className="text-3xl font-bold text-center mb-4 text-zinc-900 dark:text-white">Islem GOUICEM</h2>
-              <p className="text-center text-zinc-600 dark:text-zinc-400 mb-6">UI/UX Designer & AI Enginner</p>
+              <p className="text-center text-zinc-600 dark:text-zinc-400 mb-6">UI/UX Designer, Full stack developer & AI student</p>
               <div className="flex justify-center space-x-4">
                 {[
                   { icon: Brain, color: "text-gold-500" },
@@ -70,14 +70,12 @@ const About = () => {
                   about being an artist — it was about clarity, structure, and impact.
                 </p>
                 <p>
-                  Aspiring to craft exclusive AI solutions while designing premium digital experiences, 
-                  I&apos;ve discovered that the intersection of these fields offers incredible opportunities 
-                  to solve complex problems with sophisticated, elegant solutions.
+                  I&apos;ve found that combining AI and design opens up interesting opportunities to build tools that actually solve problems.
+                  It&apos;s not just about making things look cool — it&apos;s about making them work well and feel good to use.
                 </p>
                 <p>
-                  When I&apos;m not architecting neural networks or crafting luxury interfaces, you&apos;ll find me exploring the
-                  latest in premium tech, experimenting with cutting-edge AI models, or contributing to exclusive
-                  projects that redefine the boundaries between technology and luxury.
+                  When I&apos;m not working on projects, I&apos;m learning new tools, exploring AI applications,
+                  or building side projects that let me experiment with ideas I find interesting.
                 </p>
               </div>
             </div>
@@ -96,18 +94,18 @@ const About = () => {
             {[
               {
                 icon: Lightbulb,
-                title: "Innovation",
-                description: "Pioneering the future of AI with cutting-edge solutions.",
+                title: "Learning",
+                description: "Always exploring new tools, frameworks, and ways to solve problems better.",
               },
               {
                 icon: Users,
-                title: "Excellence",
-                description: "Delivering premium experiences that exceed the highest expectations.",
+                title: "Quality Work",
+                description: "Taking pride in building things that work well and are well-designed.",
               },
               {
                 icon: Award,
-                title: "Sophistication",
-                description: "Crafting elegant solutions that embody luxury and intelligence.",
+                title: "Practical Solutions",
+                description: "Focusing on real-world problems and approaches that actually work.",
               },
             ].map((value, index) => (
               <FloatingCard key={index} delay={index * 0.1}>
@@ -131,7 +129,7 @@ const About = () => {
               {
                 year: "2025",
                 title: "AI Projects & Web Innovation",
-                description: "Developed AI-based job matching system and afforestation platform Algreenia using modern web and AI tools.",
+                description: "Developed AI-based job matching system and afforestation platform Algreenia using web and AI tools.",
               },
               {
                 year: "2024",
