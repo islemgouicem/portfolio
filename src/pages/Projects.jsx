@@ -1,150 +1,69 @@
-"use client"
-
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Brain, Palette, Filter } from "lucide-react"
+import { useLayoutEffect, useRef, useState } from "react"
+import { Brain, Smartphone, Globe, Filter } from "lucide-react"
+import gsap from "gsap"
 import ProjectCard from "../components/ui/ProjectCard"
+import PageTitle from "../components/ui/PageTitle"
+import { useProjects } from "../data/projects"
+import { useLanguage } from "../contexts/LanguageContext"
+
+const filterOptions = [
+  { value: "all", label: "projects.all", icon: Filter },
+  { value: "ai", label: "projects.ai", icon: Brain },
+  { value: "web", label: "projects.web", icon: Globe },
+  { value: "mobile", label: "projects.mobile", icon: Smartphone },
+]
 
 const Projects = () => {
+  const { t } = useLanguage()
+  const projects = useProjects()
   const [filter, setFilter] = useState("all")
+  const grid = useRef(null)
+  const firstRender = useRef(true)
 
-  const projects = [
-    {
-      id: 1,
-      title: "Algreenia Afforestation Platform",
-      description:
-        "Hybrid platform combining AI and community engagement for afforestation projects. Features include tree type identification, irrigation tracking, impact reporting, and volunteer management.",
-      image: "/algreenia.PNG",
-      category: "environment",
-      tags: ["AI", "Web Development", "Sustainability", "React", "Node.js"],
-      github: "#", // replace with actual URL
-      demo: "#", // replace with actual URL
-      featured: true,
-    },
-    {
-      id: 2,
-      title: "AI Job Matching System",
-      description:
-        "AI-powered platform that analyzes candidate profiles and job requirements to deliver precise talent matching. Features include smart resume parsing, skill-gap analysis, and personalized job recommendations for both employers and job seekers.",
-      image: "/job_matching.png", // place this SVG or image in your /public folder
-      category: "ai",
-      tags: ["Web Development", "Python"],
-      github: "#", // replace with your real repository URL
-      demo: "#",   // replace with your live demo URL
-      featured: true,
+  const visible = filter === "all" ? projects : projects.filter((project) => project.category === filter)
+
+  // Cards are revealed on scroll at first; filter changes animate them directly.
+  useLayoutEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false
+      return undefined
     }
-
-  ]
-
-  const filteredProjects = filter === "all" ? projects : projects.filter((project) => project.category === filter)
-
-  const filterOptions = [
-    { value: "all", label: "All Projects", icon: Filter },
-    { value: "ai", label: "AI Projects", icon: Brain },
-    { value: "design", label: "Design Projects", icon: Palette },
-  ]
+    const tween = gsap.fromTo(
+      grid.current.children,
+      { autoAlpha: 0, y: 28 },
+      { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out", stagger: 0.05, clearProps: "transform,opacity,visibility" }
+    )
+    return () => tween.kill()
+  }, [filter])
 
   return (
-    <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pt-32 pb-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gold-600 via-silver-600 to-platinum-600 bg-clip-text text-transparent">
-            My Projects
-          </h1>
-          <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
-            A selection of projects combining AI, design, and web development
-          </p>
-        </motion.div>
+        <PageTitle meta={`${projects.length} ${t("projects.count")}`}>{t("projects.title")}</PageTitle>
 
-        {/* Filter Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-        >
+        <div data-reveal className="flex flex-wrap gap-2 mb-10">
           {filterOptions.map((option) => (
             <button
               key={option.value}
               onClick={() => setFilter(option.value)}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${filter === option.value
-                ? "bg-gradient-to-r from-gold-500 via-gold-600 to-gold-700 text-white shadow-luxury"
-                : "bg-white dark:bg-obsidian-800 text-zinc-700 dark:text-zinc-300 hover:bg-platinum-50 dark:hover:bg-obsidian-700 shadow-md"
-                }`}
+              aria-pressed={filter === option.value}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium border transition-colors duration-300 ${
+                filter === option.value
+                  ? "bg-gold-500 border-gold-500 text-obsidian-950"
+                  : "border-platinum-200 dark:border-white/10 text-zinc-700 dark:text-zinc-300 hover:border-gold-500/50"
+              }`}
             >
-              <option.icon className="h-5 w-5" />
-              <span>{option.label}</span>
+              <option.icon className="h-4 w-4" />
+              <span>{t(option.label)}</span>
             </button>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Featured Projects */}
-        {filter === "all" && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="mb-16"
-          >
-            <h2 className="text-3xl font-bold mb-8 text-zinc-900 dark:text-white">Featured Projects</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {projects
-                .filter((p) => p.featured)
-                .map((project, index) => (
-                  <ProjectCard key={project.id} project={project} delay={index * 0.1} featured={true} />
-                ))}
-            </div>
-          </motion.div>
-        )}
-
-        {/* All Projects */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <h2 className="text-3xl font-bold mb-8 text-zinc-900 dark:text-white">
-            {filter === "all" ? "All Projects" : `${filterOptions.find((o) => o.value === filter)?.label}`}
-          </h2>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={filter}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-              {filteredProjects.map((project, index) => (
-                <ProjectCard key={project.id} project={project} delay={index * 0.1} />
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </motion.div>
-
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mt-20 p-12 bg-gradient-to-r from-platinum-50 to-gold-50 dark:from-obsidian-900/20 dark:to-gold-900/20 rounded-2xl"
-        >
-          <h3 className="text-3xl font-bold mb-4 text-zinc-900 dark:text-white">Ready for Premium Collaboration?</h3>
-          <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-8">Let&apos;s create something extraordinary together</p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-gradient-to-r from-gold-500 via-gold-600 to-gold-700 text-white rounded-full font-semibold shadow-luxury hover:shadow-luxury-lg transition-shadow"
-          >
-            Start Your Project
-          </motion.button>
-        </motion.div>
+        <div ref={grid} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {visible.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
       </div>
     </div>
   )

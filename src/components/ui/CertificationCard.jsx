@@ -1,79 +1,75 @@
-"use client"
-
-import { motion } from "framer-motion"
 import { ExternalLink, CheckCircle, Calendar } from "lucide-react"
-import { useInView } from "react-intersection-observer"
 import PropTypes from "prop-types"
+import logo from "../../assets/logo.png"
+import { useLanguage } from "../../contexts/LanguageContext"
 
-const CertificationCard = ({ certification, delay = 0 }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
-
+const CertificationCard = ({ certification }) => {
+  const { t, tag, formatDate } = useLanguage()
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.8, delay }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
-      className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 group"
+    <div
+      data-reveal
+      className="tile overflow-hidden hover:-translate-y-1 hover:border-gold-500/40 dark:hover:border-gold-500/40 transition-[transform,border-color] duration-300 group"
     >
-      <div className="aspect-video overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
-        <img
-          src={certification.image || "/placeholder.svg"}
-          alt={certification.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
+      <div className="aspect-video overflow-hidden bg-platinum-100 dark:bg-obsidian-900">
+        {certification.image ? (
+          <img
+            src={certification.image}
+            alt={certification.title}
+            loading="lazy"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center gap-4 bg-gradient-to-br from-obsidian-900 via-obsidian-800 to-gold-950">
+            <img src={logo} alt="" className="h-12 w-auto opacity-80" />
+            <span className="text-2xl font-bold tracking-tight text-white">{certification.issuer}</span>
+          </div>
+        )}
       </div>
 
       <div className="p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-2">
-            <Calendar className="h-4 w-4 text-gray-600 dark:text-gray-400" />
-            <span className="text-sm text-gray-600 dark:text-gray-400">{certification.date}</span>
+            <Calendar className="h-4 w-4 text-zinc-600 dark:text-zinc-400" />
+            <span className="text-sm text-zinc-600 dark:text-zinc-400">{formatDate(certification.date)}</span>
           </div>
           {certification.verified && (
-            <div className="flex items-center space-x-1 text-green-600 dark:text-green-400">
+            <div className="flex items-center space-x-1 text-gold-600 dark:text-gold-400">
               <CheckCircle className="h-4 w-4" />
-              <span className="text-xs font-medium">Verified</span>
+              <span className="text-xs font-medium">{t("certifications.verified")}</span>
             </div>
           )}
         </div>
 
-        <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+        <h3 className="text-lg font-bold mb-2 text-zinc-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">
           {certification.title}
         </h3>
 
-        <p className="text-blue-600 dark:text-blue-400 font-medium mb-3">{certification.issuer}</p>
-
-        <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">{certification.description}</p>
+        <p className="text-gold-600 dark:text-gold-400 font-medium mb-4">{certification.issuer}</p>
 
         <div className="flex flex-wrap gap-2 mb-4">
           {certification.skills.map((skill) => (
-            <span
-              key={skill}
-              className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs rounded-full"
-            >
-              {skill}
+            <span key={skill} className="chip !text-xs !px-2.5 !py-0.5">
+              {tag(skill)}
             </span>
           ))}
         </div>
 
-        <a
-          href={certification.credentialUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium text-sm"
-        >
-          <span>View Credential</span>
-          <ExternalLink className="h-4 w-4" />
-        </a>
+        {certification.credentialUrl && (
+          <a
+            href={certification.credentialUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-2 text-gold-600 dark:text-gold-400 hover:text-gold-700 dark:hover:text-gold-300 font-medium text-sm"
+          >
+            <span>{t("certifications.view")}</span>
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        )}
       </div>
-    </motion.div>
+    </div>
   )
 }
+
 CertificationCard.propTypes = {
   certification: PropTypes.shape({
     image: PropTypes.string,
@@ -81,11 +77,9 @@ CertificationCard.propTypes = {
     date: PropTypes.string.isRequired,
     verified: PropTypes.bool,
     issuer: PropTypes.string.isRequired,
-    description: PropTypes.string,
     skills: PropTypes.arrayOf(PropTypes.string).isRequired,
-    credentialUrl: PropTypes.string.isRequired,
+    credentialUrl: PropTypes.string,
   }).isRequired,
-  delay: PropTypes.number,
 }
 
 export default CertificationCard

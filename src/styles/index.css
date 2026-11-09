@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -56,9 +56,6 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 
 body {
   font-family: "Inter", sans-serif;
@@ -110,35 +107,6 @@ body {
   background-image: linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
-}
-
-/* Enhanced prose styles for blog content */
-.prose {
-  max-width: none;
-}
-
-.prose h2 {
-  @apply text-2xl font-bold mt-8 mb-4 text-zinc-900 dark:text-zinc-100;
-}
-
-.prose h3 {
-  @apply text-xl font-bold mt-6 mb-3 text-zinc-900 dark:text-zinc-100;
-}
-
-.prose p {
-  @apply mb-4 text-zinc-700 dark:text-zinc-300 leading-relaxed;
-}
-
-.prose ul {
-  @apply mb-4 pl-6 space-y-2;
-}
-
-.prose li {
-  @apply text-zinc-700 dark:text-zinc-300;
-}
-
-.prose strong {
-  @apply font-semibold text-zinc-900 dark:text-zinc-100;
 }
 
 /* Animation utilities */
@@ -271,57 +239,6 @@ button {
   animation: shimmer 3s ease-in-out infinite;
 }
 
-:root {
-  --gold: #ffb338;
-  --light-shadow: #77571d;
-  --dark-shadow: #3e2904;
-}
-
-/* Container setup */
-.design-wrapper {
-  display: grid;
-  grid-template-areas: 'overlap';
-  position: relative;
-  line-height: 1;
-}
-
-.design-wrapper > div {
-  grid-area: overlap;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 900;
-  letter-spacing: 1px;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: #363833;
-  -webkit-text-stroke: 3px transparent;
-}
-
-.design-bg {
-  background-image: repeating-linear-gradient(
-    105deg,
-    var(--gold) 0%,
-    var(--dark-shadow) 5%,
-    var(--gold) 12%
-  );
-  color: transparent;
-  filter: drop-shadow(3px 6px 6px black);
-  transform: scaleY(1.05);
-  transform-origin: top;
-}
-
-.design-fg {
-  background-image: repeating-linear-gradient(
-    5deg,
-    var(--gold) 0%,
-    var(--light-shadow) 23%,
-    var(--gold) 31%
-  );
-  color: #1e2127;
-  /* transform: scale(1); */
-}
-
-
-
 @keyframes shimmer {
   0%,
   100% {
@@ -330,4 +247,101 @@ button {
   50% {
     background-position: 100% 50%;
   }
+}
+
+
+/* GSAP drives these while animating; a CSS transition on top would fight it. */
+[style*="translate"] {
+  transition: none !important;
+}
+
+/* Shared surfaces */
+.tile {
+  @apply rounded-3xl border border-platinum-200 bg-white dark:border-white/[0.07] dark:bg-obsidian-900/80;
+}
+
+.mono-label {
+  @apply font-mono text-xs uppercase tracking-[0.14em] text-gold-700 dark:text-gold-400;
+}
+
+.chip {
+  @apply rounded-full border border-platinum-200 px-3 py-1 text-sm text-zinc-700 dark:border-white/10 dark:text-zinc-300;
+}
+
+/* Stroke painted under a background-coloured fill, so overlapping glyph contours stay hidden. */
+:root {
+  --outline-fill: #fafafa;
+}
+
+.dark {
+  --outline-fill: #101012;
+}
+
+.text-outline {
+  color: var(--outline-fill);
+  -webkit-text-stroke: 3px #d97706;
+  paint-order: stroke fill;
+}
+
+.dark .text-outline {
+  -webkit-text-stroke-color: #fbbf24;
+}
+
+/* Hero: a design canvas and running code share one frame, split at --seam */
+.hero {
+  --seam: 50%;
+}
+
+.hero-tech {
+  clip-path: inset(0 0 0 var(--seam));
+}
+
+.hero-seam {
+  left: var(--seam);
+}
+
+.hero-name {
+  font-size: 24vw;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .hero-name {
+    font-size: 12.6vw;
+    white-space: nowrap;
+  }
+}
+
+.hero-ruler-x,
+.hero-ruler-y {
+  position: absolute;
+  color: rgb(217 119 6 / 0.35);
+}
+
+.hero-ruler-x {
+  inset: 0 0 auto 0;
+  height: 10px;
+  background: repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 12px);
+}
+
+.hero-ruler-y {
+  inset: 0 auto 0 0;
+  width: 10px;
+  background: repeating-linear-gradient(0deg, currentColor 0 1px, transparent 1px 12px);
+}
+
+.hero-grid {
+  background-image: radial-gradient(rgb(217 119 6 / 0.22) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.handle {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border: 1.5px solid #f59e0b;
+  background: #fafafa;
 }

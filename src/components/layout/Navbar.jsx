@@ -1,149 +1,143 @@
-"use client"
-
-import { useState, useEffect } from "react"
+import { useLayoutEffect, useRef, useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { motion } from "framer-motion"
-import { Menu, X, Sun, Moon, Code2 } from "lucide-react"
+import { Menu, X, Sun, Moon } from "lucide-react"
 import { useTheme } from "../../contexts/ThemeContext"
+import { useLanguage } from "../../contexts/LanguageContext"
+import logo from "../../assets/logo.png"
+
+const navItems = [
+  { path: "/", label: "nav.home" },
+  { path: "/projects", label: "nav.projects" },
+  { path: "/certifications", label: "nav.certifications" },
+  { path: "/resume", label: "nav.resume" },
+]
+
+const iconButton =
+  "flex h-10 w-10 items-center justify-center rounded-xl text-zinc-600 hover:bg-platinum-100 dark:text-zinc-300 dark:hover:bg-white/10 transition-colors"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const [indicator, setIndicator] = useState({ left: 0, width: 0, opacity: 0 })
   const { isDark, toggleTheme } = useTheme()
+  const { lang, setLang, t } = useLanguage()
   const location = useLocation()
+  const progress = useRef(null)
+  const links = useRef(null)
 
+  // Tucks away while reading, returns on any upward scroll.
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+    let last = window.scrollY
+    const onScroll = () => {
+      const y = window.scrollY
+      setHidden(y > last && y > window.innerHeight * 1.8)
+      last = y
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      if (progress.current) progress.current.style.transform = `scaleX(${max > 0 ? y / max : 0})`
     }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
-    { path: "/skills", label: "Skills" },
-    { path: "/projects", label: "Projects" },
-    { path: "/certifications", label: "Certifications" },
-    { path: "/resume", label: "Resume" },
-    { path: "/blog", label: "Blog" },
-    { path: "/contact", label: "Contact" },
-  ]
+  // The active marker slides between links.
+  useLayoutEffect(() => {
+    const place = () => {
+      const active = links.current?.querySelector("[aria-current='page']")
+      setIndicator(active ? { left: active.offsetLeft, width: active.offsetWidth, opacity: 1 } : { left: 0, width: 0, opacity: 0 })
+    }
+    place()
+    document.fonts?.ready.then(place)
+    window.addEventListener("resize", place)
+    return () => window.removeEventListener("resize", place)
+  }, [location.pathname, lang])
+
+  const languageSwitch = (
+    <div role="group" aria-label={t("nav.language")} className="flex rounded-lg border border-platinum-200 p-0.5 font-mono text-xs dark:border-white/10">
+      {["en", "fr"].map((code) => (
+        <button
+          key={code}
+          onClick={() => setLang(code)}
+          aria-pressed={lang === code}
+          className={`rounded-md px-2 py-1 uppercase transition-colors ${
+            lang === code ? "bg-gold-500 text-obsidian-950" : "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
+          }`}
+        >
+          {code}
+        </button>
+      ))}
+    </div>
+  )
+
+  const themeButton = (
+    <button onClick={toggleTheme} aria-label={t("nav.theme")} className={iconButton}>
+      {isDark ? <Sun className="h-[18px] w-[18px] text-gold-400" /> : <Moon className="h-[18px] w-[18px]" />}
+    </button>
+  )
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/90 dark:bg-obsidian-950/90 backdrop-blur-xl shadow-luxury border-b border-platinum-200/50 dark:border-obsidian-700/50"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="relative">
-              <motion.div
-                whileHover={{ rotate: 180 }}
-                transition={{ duration: 0.3 }}
-                className="relative w-10 h-10 bg-gradient-to-br from-gold-500 via-gold-600 to-gold-700 rounded-2xl flex items-center justify-center shadow-luxury"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-gold-400 via-gold-500 to-gold-600 rounded-2xl blur opacity-50" />
-                <div className="relative flex items-center justify-center">
-                  <Code2 className="h-4 w-4 text-white absolute" />
-                </div>
-              </motion.div>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-bold bg-gradient-to-r from-gold-600 via-gold-700 to-gold-800 bg-clip-text text-transparent">
-                Islem GCM
-              </span>
-              <span className="text-xs text-zinc-500 dark:text-zinc-400 -mt-1">Powered by code, Shaped by design</span>
-            </div>
+    <nav className={`no-print fixed inset-x-0 top-4 z-50 px-4 transition-transform duration-500 ease-out ${hidden && !isOpen ? "-translate-y-[140%]" : ""}`}>
+      <div className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl border border-platinum-200/80 bg-white/90 backdrop-blur-xl dark:border-white/10 dark:bg-obsidian-950/70">
+        <div className="flex h-14 items-center justify-between pl-4 pr-2">
+          <Link to="/" className="flex items-center gap-2.5">
+            <img src={logo} alt="" className="h-7 w-auto" />
+            <span className="hidden font-semibold tracking-tight text-zinc-900 dark:text-white min-[380px]:inline">Islem Gouicem</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div ref={links} className="relative hidden items-center md:flex">
+            <span
+              className="absolute bottom-0 top-0 rounded-lg bg-gold-500/15 transition-all duration-300 ease-out"
+              style={{ left: indicator.left, width: indicator.width, opacity: indicator.opacity }}
+            />
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`relative px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
+                aria-current={location.pathname === item.path ? "page" : undefined}
+                className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                   location.pathname === item.path
-                    ? "text-gold-600 dark:text-gold-400 bg-gold-50 dark:bg-gold-900/20"
-                    : "text-zinc-700 dark:text-zinc-300 hover:text-gold-600 dark:hover:text-gold-400 hover:bg-platinum-50 dark:hover:bg-obsidian-800/50"
+                    ? "text-gold-700 dark:text-gold-300"
+                    : "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
                 }`}
               >
-                {item.label}
-                {location.pathname === item.path && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute inset-0 bg-gradient-to-r from-gold-500/10 to-silver-500/10 rounded-xl border border-gold-200 dark:border-gold-800"
-                  />
-                )}
+                {t(item.label)}
               </Link>
             ))}
-
-            {/* Theme Toggle */}
-            <motion.button
-              onClick={toggleTheme}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="ml-4 p-2.5 rounded-xl bg-platinum-100 dark:bg-obsidian-800 hover:bg-platinum-200 dark:hover:bg-obsidian-700 transition-colors shadow-sm"
-            >
-              {isDark ? <Sun className="h-5 w-5 text-gold-500" /> : <Moon className="h-5 w-5 text-zinc-600" />}
-            </motion.button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-2">
-            <motion.button
-              onClick={toggleTheme}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-xl bg-platinum-100 dark:bg-obsidian-800 hover:bg-platinum-200 dark:hover:bg-obsidian-700 transition-colors"
-            >
-              {isDark ? <Sun className="h-5 w-5 text-gold-500" /> : <Moon className="h-5 w-5 text-zinc-600" />}
-            </motion.button>
-            <motion.button
-              onClick={() => setIsOpen(!isOpen)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-xl bg-platinum-100 dark:bg-obsidian-800 hover:bg-platinum-200 dark:hover:bg-obsidian-700 transition-colors"
-            >
-              {isOpen ? (
-                <X className="h-6 w-6 text-zinc-600 dark:text-zinc-300" />
-              ) : (
-                <Menu className="h-6 w-6 text-zinc-600 dark:text-zinc-300" />
-              )}
-            </motion.button>
+          <div className="flex items-center gap-1">
+            {languageSwitch}
+            {themeButton}
+            <Link to="/contact" className="hidden rounded-xl bg-gold-500 px-4 py-2 text-sm font-semibold text-obsidian-950 transition-colors hover:bg-gold-400 md:block">
+              {t("nav.contact")}
+            </Link>
+            <button onClick={() => setIsOpen(!isOpen)} aria-label={t("nav.menu")} aria-expanded={isOpen} className={`${iconButton} md:hidden`}>
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        <motion.div initial={false} animate={{ height: isOpen ? "auto" : 0 }} className="md:hidden overflow-hidden">
-          <div className="py-4 space-y-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                onClick={() => setIsOpen(false)}
-                className={`block px-4 py-3 text-base font-medium rounded-xl transition-colors ${
-                  location.pathname === item.path
-                    ? "text-gold-600 dark:text-gold-400 bg-gold-50 dark:bg-gold-900/20"
-                    : "text-zinc-700 dark:text-zinc-300 hover:text-gold-600 dark:hover:text-gold-400 hover:bg-platinum-50 dark:hover:bg-obsidian-800"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+        <div className={`grid transition-[grid-template-rows] duration-300 ease-out md:hidden ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+          <div className="overflow-hidden">
+            <div className="space-y-1 p-2">
+              {[...navItems, { path: "/contact", label: "nav.contact" }].map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`block rounded-xl px-4 py-3 font-medium transition-colors ${
+                    location.pathname === item.path ? "bg-gold-500/15 text-gold-700 dark:text-gold-300" : "text-zinc-700 dark:text-zinc-300"
+                  }`}
+                >
+                  {t(item.label)}
+                </Link>
+              ))}
+            </div>
           </div>
-        </motion.div>
+        </div>
+
+        <div ref={progress} className="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-gold-500" />
       </div>
-    </motion.nav>
+    </nav>
   )
 }
 

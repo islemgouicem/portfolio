@@ -4,8 +4,8 @@ import react from "@vitejs/plugin-react"
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // For Netlify deploys serve from root
-  base: "/",
+  // Relative paths work on both Netlify (/) and GitHub Pages (/portfolio/)
+  base: "./",
   build: {
     outDir: "dist",
     assetsDir: "assets",
@@ -13,9 +13,8 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ["react", "react-dom"],
           router: ["react-router-dom"],
-          motion: ["framer-motion"],
+          motion: ["gsap", "lenis"],
           icons: ["lucide-react"],
         },
       },

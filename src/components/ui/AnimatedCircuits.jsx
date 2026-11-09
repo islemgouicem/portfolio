@@ -1,203 +1,110 @@
-"use client"
+import { useLayoutEffect, useRef } from "react"
+import gsap from "gsap"
 
-import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
+const mainBuses = [
+  "M0,60 H150 L170,80 H300",
+  "M0,100 H200 L220,120 H400 L420,100 H600 L620,120 H800",
+  "M0,140 H180 L200,160 H380",
+  "M0,180 H160 L180,200 H360 L380,180 H500",
+  "M0,220 H160 L180,240 H360",
+  "M0,260 H140 L160,280 H340 L360,260 H540 L560,280 H800",
+  "M0,300 H100",
+]
+
+const verticalConnects = [
+  "M170,80 V120",
+  "M220,120 V160",
+  "M420,100 V140",
+  "M620,120 V160",
+  "M200,160 V200",
+  "M380,180 V220",
+  "M160,240 V280",
+  "M560,280 V320",
+  "M140,60 V100",
+  "M300,80 V120",
+]
+
+const busNodes = [
+  [170, 80], [300, 80], [220, 120], [420, 100], [620, 120],
+  [200, 160], [380, 180], [160, 240], [560, 280], [140, 60],
+]
+
+// A few data pulses travelling along the long buses.
+const packets = [
+  { path: mainBuses[1], duration: 5, begin: 2 },
+  { path: mainBuses[5], duration: 6, begin: 3 },
+  { path: mainBuses[3], duration: 4.5, begin: 4 },
+  { path: mainBuses[1], duration: 5, begin: 5 },
+]
 
 // eslint-disable-next-line react/prop-types
 const AnimatedCircuits = ({ className = "" }) => {
-    const [mounted, setMounted] = useState(false)
+  const root = useRef(null)
 
-    useEffect(() => {
-        setMounted(true)
-    }, [])
+  useLayoutEffect(() => {
+    const media = gsap.matchMedia()
+    media.add("(prefers-reduced-motion: no-preference)", () => {
+      const draw = (selector, vars) =>
+        gsap.fromTo(selector, { strokeDashoffset: 1, opacity: 0 }, { strokeDashoffset: 0, opacity: 1, ease: "power2.inOut", ...vars })
+      draw("[data-bus]", { duration: 2.2, stagger: 0.14 })
+      draw("[data-connect]", { duration: 1, stagger: 0.05, delay: 1.2 })
+      gsap.from("[data-node]", { opacity: 0, scale: 0, transformOrigin: "center", duration: 0.5, stagger: 0.06, delay: 1.8, ease: "back.out(2)" })
+    }, root)
+    return () => media.revert()
+  }, [])
 
-    if (!mounted) return null
+  return (
+    <div ref={root} data-circuits className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
+      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="busGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#92400e" stopOpacity="0.4" />
+            <stop offset="50%" stopColor="#f59e0b" stopOpacity="0.7" />
+            <stop offset="100%" stopColor="#92400e" stopOpacity="0.4" />
+          </linearGradient>
+          <linearGradient id="activeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#fcd34d" stopOpacity="0.8" />
+            <stop offset="50%" stopColor="#f59e0b" stopOpacity="1" />
+            <stop offset="100%" stopColor="#fcd34d" stopOpacity="0.8" />
+          </linearGradient>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="url(#busGradient)" strokeWidth="0.3" opacity="0.1" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
 
-    // More complex horizontal buses with realistic branches and varying lengths
-    const mainBuses = [
-        "M0,60 H150 L170,80 H300", // short branch
-        "M0,100 H200 L220,120 H400 L420,100 H600 L620,120 H800", // main data bus
-        "M0,140 H180 L200,160 H380", // partial bus
-        "M0,180 H160 L180,200 H360 L380,180 H500", // branched bus
-        "M0,220 H160 L180,240 H360", // shorter
-        "M0,260 H140 L160,280 H340 L360,260 H540 L560,280 H800", // long
-        "M0,300 H100", // short end
-    ]
+        {mainBuses.map((path) => (
+          <path
+            key={path}
+            data-bus
+            d={path}
+            pathLength="1"
+            strokeDasharray="1"
+            fill="none"
+            stroke="url(#busGradient)"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        ))}
 
-    const verticalConnects = [
-        "M170,80 V120",
-        "M220,120 V160",
-        "M420,100 V140",
-        "M620,120 V160",
-        "M200,160 V200",
-        "M380,180 V220",
-        "M160,240 V280",
-        "M560,280 V320",
-        "M140,60 V100",
-        "M300,80 V120",
-    ]
+        {verticalConnects.map((path) => (
+          <path key={path} data-connect d={path} pathLength="1" strokeDasharray="1" fill="none" stroke="url(#busGradient)" strokeWidth="2" strokeLinecap="round" />
+        ))}
 
-    const busNodes = [
-        { x: 170, y: 80, size: 3 },
-        { x: 300, y: 80, size: 3 },
-        { x: 220, y: 120, size: 3 },
-        { x: 420, y: 100, size: 3 },
-        { x: 620, y: 120, size: 3 },
-        { x: 200, y: 160, size: 3 },
-        { x: 380, y: 180, size: 3 },
-        { x: 160, y: 240, size: 3 },
-        { x: 560, y: 280, size: 3 },
-        { x: 140, y: 60, size: 3 },
-        { x: 300, y: 80, size: 3 },
-    ]
+        {busNodes.map(([x, y]) => (
+          <circle key={`${x}-${y}`} data-node cx={x} cy={y} r="3" fill="url(#activeGradient)" />
+        ))}
 
-    const dataPackets = Array.from({ length: 12 }, (_, i) => ({
-        id: i,
-        path: mainBuses[i % mainBuses.length],
-        delay: i * 0.6,
-        duration: 3 + Math.random() * 2,
-        size: 2 + Math.random(),
-    }))
-
-    return (
-        <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
-                <defs>
-                    <linearGradient id="busGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#92400e" stopOpacity="0.4" />
-                        <stop offset="50%" stopColor="#f59e0b" stopOpacity="0.7" />
-                        <stop offset="100%" stopColor="#92400e" stopOpacity="0.4" />
-                    </linearGradient>
-                    <linearGradient id="activeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#fcd34d" stopOpacity="0.8" />
-                        <stop offset="50%" stopColor="#f59e0b" stopOpacity="1" />
-                        <stop offset="100%" stopColor="#fcd34d" stopOpacity="0.8" />
-                    </linearGradient>
-                    <filter id="glow">
-                        <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
-                        <feMerge>
-                            <feMergeNode in="coloredBlur" />
-                            <feMergeNode in="SourceGraphic" />
-                        </feMerge>
-                    </filter>
-                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="url(#busGradient)" strokeWidth="0.3" opacity="0.1" />
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grid)" />
-
-                {mainBuses.map((path, index) => (
-                    <motion.path
-                        key={`bus-${index}`}
-                        d={path}
-                        fill="none"
-                        stroke="url(#busGradient)"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        filter="url(#glow)"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        animate={{ pathLength: 1, opacity: 1 }}
-                        transition={{
-                            duration: 2.5,
-                            delay: index * 0.2,
-                            ease: "easeInOut",
-                        }}
-                    />
-                ))}
-
-                {verticalConnects.map((path, index) => (
-                    <motion.path
-                        key={`connect-${index}`}
-                        d={path}
-                        fill="none"
-                        stroke="url(#busGradient)"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        animate={{ pathLength: 1, opacity: 1 }}
-                        transition={{
-                            duration: 1.5,
-                            delay: 1.2 + index * 0.05,
-                            ease: "easeInOut",
-                        }}
-                    />
-                ))}
-
-                {busNodes.map((node, index) => (
-                    <motion.circle
-                        key={`node-${index}`}
-                        cx={node.x}
-                        cy={node.y}
-                        r={node.size}
-                        fill="url(#activeGradient)"
-                        filter="url(#glow)"
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{
-                            scale: [1, 1.2, 1],
-                            opacity: 1,
-                        }}
-                        transition={{
-                            scale: {
-                                duration: 3,
-                                delay: 2 + index * 0.1,
-                                repeat: Number.POSITIVE_INFINITY,
-                                ease: "easeInOut",
-                            },
-                            opacity: {
-                                duration: 0.5,
-                                delay: 2 + index * 0.1,
-                                ease: "easeOut",
-                            },
-                        }}
-                    />
-                ))}
-
-                {dataPackets.map((packet) => (
-                    <motion.circle
-                        key={`packet-${packet.id}`}
-                        r={packet.size}
-                        fill="#fcd34d"
-                        filter="url(#glow)"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: [0, 1, 1, 0] }}
-                        transition={{
-                            duration: packet.duration,
-                            delay: packet.delay,
-                            repeat: Number.POSITIVE_INFINITY,
-                            ease: "linear",
-                        }}
-                    >
-                        <animateMotion
-                            dur={`${packet.duration}s`}
-                            begin={`${packet.delay}s`}
-                            repeatCount="indefinite"
-                            path={packet.path}
-                        />
-                    </motion.circle>
-                ))}
-
-                {mainBuses.map((_, index) => (
-                    <motion.path
-                        key={`wave-${index}`}
-                        d={mainBuses[index]}
-                        fill="none"
-                        stroke="url(#activeGradient)"
-                        strokeWidth="1"
-                        opacity="0.3"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: [0, 1, 0] }}
-                        transition={{
-                            duration: 6,
-                            delay: 3 + index * 1.5,
-                            repeat: Number.POSITIVE_INFINITY,
-                            ease: "easeInOut",
-                        }}
-                    />
-                ))}
-            </svg>
-        </div>
-    )
+        {packets.map((packet) => (
+          <circle key={`${packet.begin}`} r="2.4" fill="#fcd34d" opacity="0">
+            <animateMotion dur={`${packet.duration}s`} begin={`${packet.begin}s`} repeatCount="indefinite" path={packet.path} />
+            <animate attributeName="opacity" dur={`${packet.duration}s`} begin={`${packet.begin}s`} repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.1;0.85;1" />
+          </circle>
+        ))}
+      </svg>
+    </div>
+  )
 }
 
 export default AnimatedCircuits
